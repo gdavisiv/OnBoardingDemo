@@ -19,13 +19,30 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct OnBoardScreen{
+struct OnBoardScreen : View {
     var body : some View{
         ZStack{
-            Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))
+            Color(#colorLiteral(red: 0.9917476773, green: 0.7057664394, blue: 0.6240440011, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
                 
             VStack{
+                Text("Tips for Learning at Home")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    .shadow(radius: 5)
+                    .multilineTextAlignment(.center)
                 
+                Text("Having problems learning at home? Follow these tips to help save time and reduce stress!")
+                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    .shadow(radius: 5)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                
+                Image("p3")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }
         }
     }
