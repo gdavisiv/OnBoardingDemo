@@ -20,6 +20,9 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct OnBoardScreen : View {
+    
+    @State var maxWidth = UIScreen.main.bounds.width - 100
+    
     var body : some View{
         ZStack{
             Color(#colorLiteral(red: 0.9917476773, green: 0.7057664394, blue: 0.6240440011, alpha: 1))
@@ -39,10 +42,17 @@ struct OnBoardScreen : View {
                     .multilineTextAlignment(.center)
                     .padding()
                 
-                
                 Image("p3")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                ZStack{
+                    Capsule()
+                        .fill(Color.white.opacity(0.1))
+                }
+                .frame(width: maxWidth, height: 65)
             }
         }
     }
