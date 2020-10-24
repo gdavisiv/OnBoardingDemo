@@ -51,8 +51,20 @@ struct OnBoardScreen : View {
                 ZStack{
                     Capsule()
                         .fill(Color.white.opacity(0.1))
+                    
+                    HStack{
+                        ZStack{
+                            Image(systemName: "chevron.right")
+                            
+                            Image(systemName: "chevron.right")
+                                .offset(x: -10)
+                        }
+                        
+                        Spacer()
+                    }
                 }
                 .frame(width: maxWidth, height: 65)
+                .padding(.bottom)
             }
         }
     }
