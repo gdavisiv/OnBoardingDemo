@@ -22,6 +22,7 @@ struct ContentView_Previews: PreviewProvider {
 struct OnBoardScreen : View {
     
     @State var maxWidth = UIScreen.main.bounds.width - 100
+    @State var offset : CGFloat = 0
     
     var body : some View{
         ZStack{
@@ -52,6 +53,12 @@ struct OnBoardScreen : View {
                     Capsule()
                         .fill(Color.white.opacity(0.5))
                     
+                    Text("Swipe to Enter")
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
+                        .padding(.leading,30)
+                    
+                    
                     HStack{
                         ZStack{
                             Image(systemName: "chevron.right")
@@ -60,9 +67,11 @@ struct OnBoardScreen : View {
                                 .offset(x: -10)
                         }
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                        .offset(x: 10)
+                        .offset(x: 6)
                         .frame(width: 65, height: 65)
                         .background(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
+                        .clipShape(Circle())
+                        .offset(x: offset)
                         
                         Spacer()
                     }
@@ -72,4 +81,13 @@ struct OnBoardScreen : View {
             }
         }
     }
+    //Handles the swipe functionality
+    func onChanged(value: DragGesture.Value){
+        
+    }
+    
+    func onEnd(value: DragGesture.Value){
+        
+    }
+    
 }
