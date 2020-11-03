@@ -50,7 +50,7 @@ struct OnBoardScreen : View {
                 
                 ZStack{
                     Capsule()
-                        .fill(Color.white.opacity(0.1))
+                        .fill(Color.white.opacity(0.5))
                     
                     HStack{
                         ZStack{
@@ -59,6 +59,10 @@ struct OnBoardScreen : View {
                             Image(systemName: "chevron.right")
                                 .offset(x: -10)
                         }
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .offset(x: 10)
+                        .frame(width: 65, height: 65)
+                        .background(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
                         
                         Spacer()
                     }
