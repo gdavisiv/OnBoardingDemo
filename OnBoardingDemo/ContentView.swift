@@ -61,7 +61,7 @@ struct OnBoardScreen : View {
                     HStack{
                         Capsule()
                             .fill(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
-                            .frame(width: 100)
+                            .frame(width: calculateWidth())
                         
                         Spacer(minLength: 0)
                     }
@@ -91,6 +91,9 @@ struct OnBoardScreen : View {
     }
     func calculateWidth()->CGFloat{
         
+        let percent = offset / maxWidth
+        
+        return percent * maxWidth
     }
     
     //Handles the swipe functionality
