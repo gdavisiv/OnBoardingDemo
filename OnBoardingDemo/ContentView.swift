@@ -84,13 +84,21 @@ struct OnBoardScreen : View {
     }
     //Handles the swipe functionality
     func onChanged(value: DragGesture.Value){
-        if value.translation.width > 0 {
+        if value.translation.width > 0 && offset <= maxWidth - 65{
         offset = value.translation.width
         }
     }
     
     func onEnd(value: DragGesture.Value){
         
+        withAnimation(Animation.easeOut(duration: 0.3)){
+            if offset > 180 {
+                offset = maxWidth - 65
+            }
+            else{
+                offset = 0
+            }
+        }
     }
     
 }
