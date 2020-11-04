@@ -58,6 +58,13 @@ struct OnBoardScreen : View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
                         .padding(.leading,30)
                     
+                    HStack{
+                        Capsule()
+                            .fill(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
+                            .frame(width: 100)
+                        
+                        Spacer(minLength: 0)
+                    }
                     
                     HStack{
                         ZStack{
@@ -82,6 +89,10 @@ struct OnBoardScreen : View {
             }
         }
     }
+    func calculateWidth()->CGFloat{
+        
+    }
+    
     //Handles the swipe functionality
     func onChanged(value: DragGesture.Value){
         if value.translation.width > 0 && offset <= maxWidth - 65{
@@ -89,6 +100,7 @@ struct OnBoardScreen : View {
         }
     }
     
+    //Handles making sure the swipe button does not go outside its bounds
     func onEnd(value: DragGesture.Value){
         
         withAnimation(Animation.easeOut(duration: 0.3)){
