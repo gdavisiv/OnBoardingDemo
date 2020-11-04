@@ -72,6 +72,7 @@ struct OnBoardScreen : View {
                         .background(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
                         .clipShape(Circle())
                         .offset(x: offset)
+                        .gesture(DragGesture().onChanged(onChanged(value:)).onEnded(onEnd(value:)))
                         
                         Spacer()
                     }
@@ -83,7 +84,9 @@ struct OnBoardScreen : View {
     }
     //Handles the swipe functionality
     func onChanged(value: DragGesture.Value){
-        
+        if value.translation.width > 0 {
+        offset = value.translation.width
+        }
     }
     
     func onEnd(value: DragGesture.Value){
