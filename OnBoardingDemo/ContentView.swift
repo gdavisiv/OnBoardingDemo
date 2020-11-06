@@ -58,13 +58,13 @@ struct OnBoardScreen : View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
                         .padding(.leading,30)
                     
-                    HStack{
-                        Capsule()
-                            .fill(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
-                            .frame(width: calculateWidth())
-                        
-                        Spacer(minLength: 0)
-                    }
+                        HStack{
+                            Capsule()
+                                .fill(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
+                                .frame(width: calculateWidth() + 65)
+                            
+                            Spacer(minLength: 0)
+                        }
                     
                     HStack{
                         ZStack{
@@ -109,6 +109,13 @@ struct OnBoardScreen : View {
         withAnimation(Animation.easeOut(duration: 0.3)){
             if offset > 180 {
                 offset = maxWidth - 65
+                
+                //Notify User that gesture is completed
+                
+                //Add animation delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                    NotificationCenter.default.post(name: NSNotification.Name, object: <#T##Any?#>)
+                }
             }
             else{
                 offset = 0
