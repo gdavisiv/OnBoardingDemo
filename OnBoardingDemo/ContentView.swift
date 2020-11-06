@@ -8,14 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var goToHome = false
+    
     var body: some View {
-        OnBoardScreen()
+        ZStack {
+            if goToHome{
+                HomeScreen()
+            }
+            else{
+                OnBoardScreen()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("Success")), perform: { _ in withAnimation{self.goToHome = true}
+            })
+        }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct HomeScreen : View{
+    var body : some View{
+        ZStack {
+            Color(#colorLiteral(red: 0.9917476773, green: 0.7057664394, blue: 0.6240440011, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
+            
+            Text("Home Screen")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                .shadow(radius: 5)
+                .multilineTextAlignment(.center)
+        }
+        
     }
 }
 
@@ -30,6 +59,9 @@ struct OnBoardScreen : View {
                 .edgesIgnoringSafeArea(.all)
                 
             VStack{
+                
+                Spacer()
+                
                 Text("Tips for Learning at Home")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -42,6 +74,8 @@ struct OnBoardScreen : View {
                     .shadow(radius: 5)
                     .multilineTextAlignment(.center)
                     .padding()
+                
+                //Spacer()
                 
                 Image("p3")
                     .resizable()
@@ -114,7 +148,7 @@ struct OnBoardScreen : View {
                 
                 //Add animation delay
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                    NotificationCenter.default.post(name: NSNotification.Name, object: <#T##Any?#>)
+                    NotificationCenter.default.post(name: NSNotification.Name("Success"), object: nil)
                 }
             }
             else{
